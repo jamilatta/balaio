@@ -98,14 +98,15 @@ def attempts(request):
             'objects': [attempt.to_dict() for attempt in attempts]}
 
 
-@view_config(route_name='Ticket', request_method='POST', renderer="gtw")
+@view_config(route_name='Attempt', request_method='POST', renderer="gtw")
 def update_attempt(request):
     """
-    Update a attempt
+    Update an attempt setting atribute proceed_to_checkout=True
     """
     attempt = request.db.query(models.Attempt).get(request.matchdict['id'])
+
     if attempt:
-        ticket.is_open = request.POST['proceed_to_checkout']
+        attempt.proceed_to_checkout = request.POST['proceed_to_checkout']
         try:
             transaction.commit()
             return HTTPAccepted()
@@ -285,6 +286,7 @@ def main(config, engine):
     # get
     config_pyrmd.add_route('ArticlePkg', '/api/v1/packages/{id}/')
     config_pyrmd.add_route('Attempt', '/api/v1/attempts/{id}/')
+    config_pyrmd.add_route('Ticket', '/api/v1/tickets/{id}/')
 
     # lists
     config_pyrmd.add_route('list_package', '/api/v1/packages/')
