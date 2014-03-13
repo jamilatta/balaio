@@ -94,6 +94,7 @@ class Attempt(Base):
     checkout_started_at = Column(DateTime)
     queued_checkout = Column(Boolean)
     user_mark_to_checkout = Column(String(length=64), nullable=True)
+    date_mark_to_checkout = Column(DateTime(timezone=True))
 
     articlepkg = relationship('ArticlePkg',
                               backref=backref('attempts',
