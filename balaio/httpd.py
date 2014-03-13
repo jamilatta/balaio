@@ -108,6 +108,7 @@ def update_attempt(request):
     if attempt:
         attempt.proceed_to_checkout = request.POST['proceed_to_checkout']
         attempt.user_mark_to_checkout = request.POST['user_mark_to_checkout']
+        attempt.date_mark_to_checkout = request.POST['date_mark_to_checkout']
         try:
             transaction.commit()
             return HTTPAccepted()
