@@ -72,7 +72,7 @@ def get_attempt(package, Session=models.Session):
 
             # Trying to get the submitted email
             try:
-                dirname = os.path.dirname(pkg._filename)
+                dirname = os.path.dirname(package.primary_path)
                 attempt.email_submitted = utils.get_email_from_config(dirname)
             except IOError as e:
                 logger.debug('Failed to get the submitted email from .config file for %s' % package)

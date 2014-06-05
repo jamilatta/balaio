@@ -318,10 +318,11 @@ def get_static_path(path, aid, filename):
 
 def get_email_from_config(dirname):
     """
+    Get e-mail from .config file
     """
-    fp = open(os.path.join(dirname, '.config'))
+    fp = open(os.path.join(dirname, '.config'), 'r')
 
     config = Configuration(fp)
 
-    return config.items['identify']['email']
+    return config.items()[0][1]['email']
 
