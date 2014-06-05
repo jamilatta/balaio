@@ -315,3 +315,13 @@ def get_static_path(path, aid, filename):
     """
     return os.path.join(path, aid, os.path.basename(filename))
 
+
+def get_email_from_config(dirname):
+    """
+    """
+    fp = open(os.path.join(dirname, '.config'))
+
+    config = Configuration(fp)
+
+    return config.items['identify']['email']
+

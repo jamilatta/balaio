@@ -139,6 +139,7 @@ class Notifier(object):
                      'package_name': self.checkpoint.attempt.xml_filename,
                      'uploaded_at': str(self.checkpoint.attempt.started_at),
                      'article': article_uri,
+                     'submitted_by': self.checkpoint.attempt.email_submitted,
                    }
             try:
                 resource_id = self.scieloapi.checkins.post(data_checkins)
