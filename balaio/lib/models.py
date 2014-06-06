@@ -92,7 +92,7 @@ class Attempt(Base):
     checkout_started_at = Column(DateTime)
     queued_checkout = Column(Boolean)
 
-    email_submitted = Column(String(length=64))
+    submitted_by = Column(String(length=254))
 
     articlepkg = relationship('ArticlePkg',
                               backref=backref('attempts',
